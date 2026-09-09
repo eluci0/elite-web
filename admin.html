@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ELITE Barbershop | Panel de Administración</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Oswald:wght@500;700;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="css/admin.css" />
+</head>
+<body>
+
+  <!-- PANTALLA DE ACCESO / LOGIN SEGURO CON PIN -->
+  <div class="login-overlay" id="login-overlay">
+    <div class="login-card">
+      <svg class="login-brand-logo" viewBox="0 0 1000 300" xmlns="http://www.w3.org/2000/svg">
+        <g fill="none" stroke="#ffffff" stroke-width="38" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M 195,58 C 95,58 45,98 45,150 C 45,202 95,242 195,242" />
+          <path d="M 45,150 L 175,150" />
+          <path d="M 285,58 L 285,202 C 285,225 305,242 330,242 L 415,242" />
+          <path d="M 585,58 L 715,58" />
+          <path d="M 650,58 L 650,242" />
+          <path d="M 805,58 C 905,58 955,98 955,150 C 955,202 905,242 805,242" />
+          <path d="M 955,150 L 825,150" />
+        </g>
+        <g fill="#ffffff">
+          <path d="M 466,44 C 466,44 485,20 500,20 C 515,20 534,44 534,44 Z" />
+          <path d="M 466,256 C 466,256 485,280 500,280 C 515,280 534,256 534,256 Z" />
+          <rect x="466" y="52" width="68" height="196" rx="2" />
+        </g>
+      </svg>
+      <h2 class="login-title">Control de Acceso</h2>
+      <p class="login-sub">Sistema de Gestión • Sucursal Matamoros</p>
+
+      <form id="login-form">
+        <div class="form-group">
+          <label>Usuario / Correo</label>
+          <input type="text" id="login-email" required class="form-control" placeholder="lucio@elite.com" autocomplete="username" />
+        </div>
+        <div class="form-group">
+          <label>Contraseña / PIN</label>
+          <input type="password" id="login-pass" required class="form-control" placeholder="••••" autocomplete="current-password" />
+        </div>
+        <button type="submit" class="btn-primary">Ingresar al Sistema</button>
+        
+        <div id="login-error" style="display: none; color: var(--red); font-size: 0.88rem; margin-top: 1rem; font-weight: 700;">
+          ⚠ Correo o PIN incorrecto. Verifica tus datos de acceso.
+        </div>
+      </form>
+
+      <div style="margin-top: 2rem; border-top: 1px solid var(--border-color); padding-top: 1.2rem;">
+        <a href="index.html" style="color: var(--text-muted); font-size: 0.82rem; text-decoration: none; transition: var(--transition);">
+          ← Volver al Sitio Web Principal
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- PANEL DE CONTROL / DASHBOARD -->
+  <div class="admin-layout" id="admin-layout" style="display: none;">
+    <aside class="admin-sidebar">
+      <div class="sidebar-brand">
+        <span style="font-size: 1.6rem;">💈</span>
+        <div>
+          <div style="font-family: var(--font-display); font-size: 1.15rem; font-weight: 900; letter-spacing: 1px;">ELITE BARBER</div>
+          <div style="font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase;">Portal Administrativo</div>
+        </div>
+      </div>
+
+      <ul class="sidebar-menu" id="sidebar-menu"></ul>
+
+      <div class="sidebar-footer">
+        <a href="index.html" class="sidebar-link" style="padding: 0.5rem 0.8rem; font-size: 0.82rem;">
+          <span>🌐</span> <span>Ver Sitio Web</span>
+        </a>
+      </div>
+    </aside>
+
+    <main class="admin-main">
+      <header class="admin-topbar">
+        <div class="topbar-user-badge">
+          <span class="role-tag" id="topbar-role-tag">Rol</span>
+          <span style="font-weight: 700; font-size: 0.92rem;" id="topbar-user-name">Usuario</span>
+        </div>
+
+        <div>
+          <button class="btn-logout" id="btn-logout">Cerrar Sesión</button>
+        </div>
+      </header>
+
+      <div class="dashboard-content" id="main-content-area"></div>
+    </main>
+  </div>
+
+  <script src="js/admin.js"></script>
+</body>
+</html>

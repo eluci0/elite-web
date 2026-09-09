@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ELITE Barbershop | Los Mejores Barberos de la Ciudad</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Oswald:wght@500;700;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Estilos Desacoplados -->
+  <link rel="stylesheet" href="css/styles.css" />
+  
+  <!-- Three.js CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+<body>
+
+  <div id="progress-bar"></div>
+
+  <!-- Canvas 3D -->
+  <div id="webgl-canvas-container"></div>
+
+  <!-- Barra de Navegación -->
+  <nav>
+    <a href="#" style="display: flex; align-items: center; text-decoration: none;">
+      <svg class="nav-logo-svg" viewBox="0 0 1000 300" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <clipPath id="nav-pole-clip">
+            <rect x="466" y="52" width="68" height="196" rx="4" />
+          </clipPath>
+          <linearGradient id="navPoleGlass" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#000000" stop-opacity="0.35"/>
+            <stop offset="25%" stop-color="#ffffff" stop-opacity="0.5"/>
+            <stop offset="65%" stop-color="#000000" stop-opacity="0.0"/>
+            <stop offset="100%" stop-color="#000000" stop-opacity="0.35"/>
+          </linearGradient>
+        </defs>
+
+        <g fill="none" stroke="#ffffff" stroke-width="38" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M 195,58 C 95,58 45,98 45,150 C 45,202 95,242 195,242" />
+          <path d="M 45,150 L 175,150" />
+          <path d="M 285,58 L 285,202 C 285,225 305,242 330,242 L 415,242" />
+          <path d="M 585,58 L 715,58" />
+          <path d="M 650,58 L 650,242" />
+          <path d="M 805,58 C 905,58 955,98 955,150 C 955,202 905,242 805,242" />
+          <path d="M 955,150 L 825,150" />
+        </g>
+        
+        <g fill="#ffffff">
+          <path d="M 466,44 C 466,44 485,20 500,20 C 515,20 534,44 534,44 Z" />
+          <path d="M 466,256 C 466,256 485,280 500,280 C 515,280 534,256 534,256 Z" />
+        </g>
+
+        <g clip-path="url(#nav-pole-clip)">
+          <rect x="466" y="52" width="68" height="196" fill="#ffffff" />
+          <g class="animated-pole-stripes">
+            <line x1="420" y1="16" x2="580" y2="-144" stroke="#d90429" stroke-width="20" stroke-linecap="square"/>
+            <line x1="420" y1="52" x2="580" y2="-108" stroke="#0077b6" stroke-width="20" stroke-linecap="square"/>
+            <line x1="420" y1="88" x2="580" y2="-72" stroke="#d90429" stroke-width="20" stroke-linecap="square"/>
+            <line x1="420" y1="124" x2="580" y2="-36" stroke="#0077b6" stroke-width="20" stroke-linecap="square"/>
+            <line x1="420" y1="160" x2="580" y2="0" stroke="#d90429" stroke-width="20" stroke-linecap="square"/>
+            <line x1="420" y1="196" x2="580" y2="36" stroke="#0077b6" stroke-width="20" stroke-linecap="square"/>
+            <line x1="420" y1="232" x2="580" y2="72" stroke="#d90429" stroke-width="20" stroke-linecap="square"/>
+            <line x1="420" y1="268" x2="580" y2="108" stroke="#0077b6" stroke-width="20" stroke-linecap="square"/>
+            <line x1="420" y1="304" x2="580" y2="144" stroke="#d90429" stroke-width="20" stroke-linecap="square"/>
+            <line x1="420" y1="340" x2="580" y2="180" stroke="#0077b6" stroke-width="20" stroke-linecap="square"/>
+            <line x1="420" y1="376" x2="580" y2="216" stroke="#d90429" stroke-width="20" stroke-linecap="square"/>
+            <line x1="420" y1="412" x2="580" y2="252" stroke="#0077b6" stroke-width="20" stroke-linecap="square"/>
+            <line x1="420" y1="448" x2="580" y2="288" stroke="#d90429" stroke-width="20" stroke-linecap="square"/>
+            <line x1="420" y1="484" x2="580" y2="324" stroke="#0077b6" stroke-width="20" stroke-linecap="square"/>
+          </g>
+          <rect x="466" y="52" width="68" height="196" fill="url(#navPoleGlass)" />
+        </g>
+      </svg>
+    </a>
+
+    <ul class="nav-links">
+      <li><a href="#on-craft">Nuestra Técnica</a></li>
+      <li><a href="#tradition">Servicios</a></li>
+      <li><a href="#transformation">Transformación</a></li>
+      <li><a href="#services">Menú</a></li>
+      <li><a href="#quote-target">Cotización</a></li>
+    </ul>
+
+    <a href="#quote-target" class="nav-pill">Cotizar Cita</a>
+  </nav>
+
+  <!-- SECCIÓN HERO -->
+  <section class="hero-section">
+    <div class="hero-top-info">
+      <div class="hero-tag">EST. 2025 • LOS MEJORES BARBEROS DE LA CIUDAD</div>
+      
+      <div class="hero-logo-title-container">
+        <svg class="hero-logo-title-svg" viewBox="0 0 1000 300" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <clipPath id="hero-pole-clip">
+              <rect x="466" y="52" width="68" height="196" rx="4" />
+            </clipPath>
+            <linearGradient id="heroPoleGlass" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#000000" stop-opacity="0.35"/>
+              <stop offset="25%" stop-color="#ffffff" stop-opacity="0.5"/>
+              <stop offset="65%" stop-color="#000000" stop-opacity="0.0"/>
+              <stop offset="100%" stop-color="#000000" stop-opacity="0.35"/>
+            </linearGradient>
+          </defs>
+
+          <g fill="none" stroke="#ffffff" stroke-width="38" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M 195,58 C 95,58 45,98 45,150 C 45,202 95,242 195,242" />
+            <path d="M 45,150 L 175,150" />
+            <path d="M 285,58 L 285,202 C 285,225 305,242 330,242 L 415,242" />
+            <path d="M 585,58 L 715,58" />
+            <path d="M 650,58 L 650,242" />
+            <path d="M 805,58 C 905,58 955,98 955,150 C 955,202 905,242 805,242" />
+            <path d="M 955,150 L 825,150" />
+          </g>
+          
+          <g fill="#ffffff">
+            <path d="M 466,44 C 466,44 485,20 500,20 C 515,20 534,44 534,44 Z" />
+            <path d="M 466,256 C 466,256 485,280 500,280 C 515,280 534,256 534,256 Z" />
+          </g>
+
+          <g clip-path="url(#hero-pole-clip)">
+            <rect x="466" y="52" width="68" height="196" fill="#ffffff" />
+            <g class="animated-pole-stripes">
+              <line x1="420" y1="16" x2="580" y2="-144" stroke="#d90429" stroke-width="20" stroke-linecap="square"/>
+              <line x1="420" y1="52" x2="580" y2="-108" stroke="#0077b6" stroke-width="20" stroke-linecap="square"/>
+              <line x1="420" y1="88" x2="580" y2="-72" stroke="#d90429" stroke-width="20" stroke-linecap="square"/>
+              <line x1="420" y1="124" x2="580" y2="-36" stroke="#0077b6" stroke-width="20" stroke-linecap="square"/>
+              <line x1="420" y1="160" x2="580" y2="0" stroke="#d90429" stroke-width="20" stroke-linecap="square"/>
+              <line x1="420" y1="196" x2="580" y2="36" stroke="#0077b6" stroke-width="20" stroke-linecap="square"/>
+              <line x1="420" y1="232" x2="580" y2="72" stroke="#d90429" stroke-width="20" stroke-linecap="square"/>
+              <line x1="420" y1="268" x2="580" y2="108" stroke="#0077b6" stroke-width="20" stroke-linecap="square"/>
+              <line x1="420" y1="304" x2="580" y2="144" stroke="#d90429" stroke-width="20" stroke-linecap="square"/>
+              <line x1="420" y1="340" x2="580" y2="180" stroke="#0077b6" stroke-width="20" stroke-linecap="square"/>
+              <line x1="420" y1="376" x2="580" y2="216" stroke="#d90429" stroke-width="20" stroke-linecap="square"/>
+              <line x1="420" y1="412" x2="580" y2="252" stroke="#0077b6" stroke-width="20" stroke-linecap="square"/>
+              <line x1="420" y1="448" x2="580" y2="288" stroke="#d90429" stroke-width="20" stroke-linecap="square"/>
+              <line x1="420" y1="484" x2="580" y2="324" stroke="#0077b6" stroke-width="20" stroke-linecap="square"/>
+            </g>
+            <rect x="466" y="52" width="68" height="196" fill="url(#heroPoleGlass)" />
+          </g>
+        </svg>
+      </div>
+
+      <p class="hero-desc">
+        Desliza para explorar nuestra técnica y reservar tu silla.
+      </p>
+      <div>
+        <a href="#quote-target" class="btn-action-pill">Reservar Silla</a>
+      </div>
+    </div>
+
+    <div class="hero-bottom-status">
+      <div class="hero-location-tag">MATAMOROS, TAMAULIPAS</div>
+      <div class="corner-badge">01</div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN 2: ¿POR QUÉ NOSOTROS? -->
+  <section class="section-on-craft" id="on-craft">
+    <div class="craft-left-content">
+      <h2 class="huge-heading zoom-title">¿Por qué nosotros?</h2>
+      
+      <div class="section-content-reveal">
+        <div class="bullet-features">
+          <div class="bullet-item">
+            <div class="bullet-icon">✂</div>
+            <div class="bullet-text">Contamos con staff competente y amistoso!</div>
+          </div>
+          <div class="bullet-item">
+            <div class="bullet-icon">⚡</div>
+            <div class="bullet-text">Técnicas constantemente actualizadas...</div>
+          </div>
+          <div class="bullet-item">
+            <div class="bullet-icon">💈</div>
+            <div class="bullet-text">Nos importa tu cabello, nos importas tú!</div>
+          </div>
+        </div>
+
+        <div class="brutalist-block">
+          <div class="brutalist-title">
+            SIN CORTES APRESURADOS.
+            <span>SIN LÍNEAS MARCADAS.</span>
+            SÉ ELITE.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="craft-right-space"></div>
+  </section>
+
+  <!-- SECCIÓN 3: SERVICIOS & MARQUESINA -->
+  <section class="section-tradition" id="tradition">
+    <div class="giant-tradition-title zoom-title centered">SERVICIOS</div>
+
+    <div class="section-content-reveal">
+      <div class="ticker-wrap">
+        <div class="ticker-move">
+          <span class="ticker-item">• SKIN FADE'S</span>
+          <span class="ticker-item">• NAVAJA CLÁSICA</span>
+          <span class="ticker-item">• DISEÑO Y PERFILADO DE BARBA</span>
+          <span class="ticker-item">• MASAJE CON TOALLA CALIENTE</span>
+          <span class="ticker-item">• DELINEADO DE CEJA</span>
+          <span class="ticker-item">• FACIALES</span>
+          <span class="ticker-item">• SKIN FADE'S</span>
+          <span class="ticker-item">• NAVAJA CLÁSICA</span>
+          <span class="ticker-item">• DISEÑO Y PERFILADO DE BARBA</span>
+          <span class="ticker-item">• MASAJE CON TOALLA CALIENTE</span>
+          <span class="ticker-item">• DELINEADO DE CEJA</span>
+          <span class="ticker-item">• FACIALES</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN 4: COMPARADOR ANTES / DESPUÉS -->
+  <section class="section-masonry" id="transformation">
+    <div class="before-after-outer">
+      <h2 class="before-after-title zoom-title centered">TRANSFORMACIÓN REAL</h2>
+      
+      <div class="section-content-reveal">
+        <p class="before-after-desc">Arrastra el deslizador central para comparar el crecimiento inicial contra el corte terminado.</p>
+        
+        <div class="ba-slider-container" id="ba-slider">
+          <div class="ba-img-wrapper ba-before-wrap">
+            <img 
+              src="Before.jpeg" 
+              alt="Antes - Sin corte" 
+              onerror="const alts=['before.jpeg','Before.jpg','before.jpg']; for(let a of alts){if(!this.dataset[a]){this.dataset[a]='1';this.src=a;break;}}" 
+            />
+            <span class="ba-pill-badge ba-badge-before">ANTES • SIN CORTE</span>
+          </div>
+
+          <div class="ba-img-wrapper ba-after-wrap" id="ba-after-layer">
+            <img 
+              src="After.jpeg" 
+              alt="Después - Corte terminado" 
+              onerror="const alts=['after.jpeg','After.jpg','after.jpg']; for(let a of alts){if(!this.dataset[a]){this.dataset[a]='1';this.src=a;break;}}" 
+            />
+            <span class="ba-pill-badge ba-badge-after">DESPUÉS • CORTE TERMINADO</span>
+          </div>
+
+          <div class="ba-handle" id="ba-handle-line">
+            <div class="ba-handle-btn">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M7 16l-4-4 4-4M17 8l4 4-4 4" />
+              </svg>
+            </div>
+          </div>
+
+          <input type="range" min="0" max="100" value="50" class="ba-range-input" id="ba-range" aria-label="Deslizar para comparar antes y después" />
+        </div>
+
+        <div class="metrics-stats-grid">
+          <div>
+            <div class="metric-number">+3,000</div>
+            <div class="metric-label">Cortes Ejecutados</div>
+          </div>
+          <div>
+            <div class="metric-number">4.9 ★</div>
+            <div class="metric-label">Valoración en Reseñas</div>
+          </div>
+          <div>
+            <div class="metric-number">100%</div>
+            <div class="metric-label">Simetría Craneal</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN 5: FILOSOFÍA DEL CORTE -->
+  <section class="section-strike">
+    <div class="strike-heading zoom-title centered">
+      POR QUÉ EL <span class="strike-marker">CORTE</span> IMPORTA
+    </div>
+    <div class="section-content-reveal">
+      <p class="strike-sub">
+        Un degradado alto estiliza la estructura craneal, resalta la mandíbula y proyecta seguridad en cada interacción.
+      </p>
+    </div>
+  </section>
+
+  <!-- SECCIÓN 6: MENÚ DE SERVICIOS -->
+  <section class="section-menu" id="services">
+    <div class="menu-header-box">
+      <div class="menu-tag">MAESTRÍA EN LA SILLA</div>
+      <h2 class="menu-title zoom-title centered">ELIGE TU SERVICIO</h2>
+    </div>
+
+    <div class="section-content-reveal">
+      <div class="service-grid">
+        
+        <!-- SERVICIO 1: FADE -->
+        <div class="service-product-card">
+          <div>
+            <div class="card-top-meta">
+              <span class="service-badge-pill">INSIGNIA</span>
+              <span class="service-duration-tag">⏱ 40 MIN</span>
+            </div>
+            <h3 class="service-item-title">FADE</h3>
+            <div class="service-item-price">$180 MXN</div>
+            <ul class="service-features-list">
+              <li>Corte de cabello</li>
+              <li>Texturizado personalizado a tijera en cúspide</li>
+              <li>Perfilado de cuello a navaja recta tradicional</li>
+              <li>Peinado estructurado con pomada matte</li>
+            </ul>
+          </div>
+          <button class="btn-select-service" onclick="selectServiceFromCard('180')">Elegir Servicio</button>
+        </div>
+
+        <!-- SERVICIO 2: PERFILADO & BARBA -->
+        <div class="service-product-card">
+          <div>
+            <div class="card-top-meta">
+              <span class="service-badge-pill">DISEÑO</span>
+              <span class="service-duration-tag">⏱ 30 MIN</span>
+            </div>
+            <h3 class="service-item-title">PERFILADO & BARBA</h3>
+            <div class="service-item-price">$200 MXN</div>
+            <ul class="service-features-list">
+              <li>Esculpido volumétrico a máquina alzada</li>
+              <li>Lavado de barba</li>
+              <li>Alineación quirúrgica de mejilla a navaja</li>
+              <li>Hidratación profunda con aceite de argán</li>
+            </ul>
+          </div>
+          <button class="btn-select-service" onclick="selectServiceFromCard('200')">Elegir Servicio</button>
+        </div>
+
+        <!-- SERVICIO 3: TRATAMIENTO REAL ELITE -->
+        <div class="service-product-card">
+          <div>
+            <div class="card-top-meta">
+              <span class="service-badge-pill">EXPERIENCIA VIP</span>
+              <span class="service-duration-tag">⏱ 60 MIN</span>
+            </div>
+            <h3 class="service-item-title">TRATAMIENTO REAL ELITE</h3>
+            <div class="service-item-price">$600 MXN</div>
+            <ul class="service-features-list">
+              <li>Corte Fade completo con afeitado facial</li>
+              <li>Arquitectura de barba con doble toalla caliente</li>
+              <li>Exfoliación facial con vapor y lavado mentolado</li>
+              <li>Masaje capilar revitalizante y acabado de lujo</li>
+            </ul>
+          </div>
+          <button class="btn-select-service" onclick="selectServiceFromCard('600')">Elegir Servicio</button>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN 7: FOOTER & COTIZADOR -->
+  <footer class="section-footer-cta" id="quote-target">
+    <div class="quote-box-container">
+      <h3 class="quote-box-title zoom-title centered">CALCULA TU SERVICIO</h3>
+      
+      <div class="section-content-reveal">
+        <p class="quote-box-sub">Selecciona los servicios que deseas para obtener tu estimado al instante.</p>
+
+        <form id="instant-quote-form">
+          <div class="quote-options-grid">
+            <label class="quote-chip">
+              <input type="checkbox" name="service-pick" value="180" data-name="Fade" checked>
+              <span>Fade ($180 MXN)</span>
+            </label>
+            <label class="quote-chip">
+              <input type="checkbox" name="service-pick" value="200" data-name="Barba a Navaja">
+              <span>Barba a Navaja ($200 MXN)</span>
+            </label>
+            <label class="quote-chip">
+              <input type="checkbox" name="service-pick" value="150" data-name="Limpieza Facial">
+              <span>Limpieza Facial ($150 MXN)</span>
+            </label>
+            <label class="quote-chip">
+              <input type="checkbox" name="service-pick" value="80" data-name="Delineado de Ceja">
+              <span>Delineado de Ceja ($80 MXN)</span>
+            </label>
+          </div>
+
+          <div class="total-live-calc">
+            <span>Estimado Total:</span>
+            <strong id="live-total-val">$180 MXN</strong>
+          </div>
+
+          <div style="margin-bottom: 1.2rem;">
+            <input type="text" id="client-name-input" placeholder="Tu Nombre Completo" required style="width: 100%; padding: 0.9rem; border-radius: 6px; border: 1px solid rgba(255,255,255,0.15); background: #0c0e14; color: #fff; font-family: inherit; outline: none;" />
+          </div>
+
+          <button type="submit" class="btn-quote-submit">
+            Solicitar Cotización & Reservar Silla
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Contacto & Ubicación en Matamoros con WhatsApp Oficial -->
+    <div class="footer-info-grid">
+      <div class="footer-info-col">
+        <h4>Ubicación & Citas</h4>
+        <p>Matamoros, Tamaulipas, México.<br>Citas previas y clientes sin cita son bienvenidos.</p>
+        <p style="margin-top: 0.6rem;">
+          WhatsApp Oficial: <a href="https://wa.me/19564793074" target="_blank" style="color: var(--cyan-accent); text-decoration: none; font-weight: 700;">+1 (956) 479-3074</a>
+        </p>
+      </div>
+      <div class="footer-info-col">
+        <h4>Horario de Atención</h4>
+        <p>Lunes a Sábado: 10:00 AM – 8:00 PM<br>Domingo: 11:00 AM – 4:00 PM</p>
+      </div>
+    </div>
+
+    <div class="footer-sub-links">
+      <span>© 2026 ELITE Barbershop. Todos los derechos reservados.</span>
+      <span>Matamoros, Tamaulipas • <a href="admin.html">Acceso Personal / Staff</a></span>
+    </div>
+  </footer>
+
+  <!-- MODAL DE CONFIRMACIÓN VIP CON WHATSAPP OFICIAL -->
+  <div class="reservation-modal-backdrop" id="res-modal">
+    <div class="reservation-modal-card">
+      <button class="btn-modal-close" id="btn-close-modal">&times;</button>
+      <div style="font-size: 2.2rem; margin-bottom: 0.5rem;">💈</div>
+      <h3 style="font-family: var(--font-display); font-size: 1.8rem; text-transform: uppercase; color: #fff; margin-bottom: 0.4rem;">
+        ¡Cita Lista para Confirmar!
+      </h3>
+      <p style="font-size: 0.88rem; color: var(--text-muted);">
+        Hemos preparado tu cotización. Pulsa el botón para enviar los detalles directamente a WhatsApp y agendar tu lugar.
+      </p>
+
+      <div class="modal-summary-box" id="modal-summary-content"></div>
+
+      <a href="#" class="btn-whatsapp-confirm" id="whatsapp-direct-link" target="_blank">
+        <span>Confirmar por WhatsApp</span>
+        <span>→</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- Scripts Modularizados -->
+  <script src="js/scissors3d.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
